@@ -4,4 +4,8 @@ RUN dnf update -y
 RUN dnf install cronie \
 	python3-pip \
 	firewalld \
-	-y	
+	network-scripts \
+	traceroute \
+	-y
+USER root
+RUN systemctl enable firewalld
