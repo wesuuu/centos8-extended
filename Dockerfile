@@ -6,9 +6,15 @@ RUN dnf install cronie \
 	firewalld \
 	network-scripts \
 	traceroute \
+	gcc \
+	python3-devel \
 	-y
 
-RUN pip3 install wheel pytest pytest-runner requests
+RUN pip3 install wheel \
+		pytest \
+		pytest-runner \
+		requests \
+		elastalert
 
 USER root
 RUN systemctl enable firewalld
