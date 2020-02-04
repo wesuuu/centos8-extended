@@ -8,7 +8,7 @@ RUN dnf install cronie \
 	traceroute \
 	-y
 
-RUN pip3 install wheel pytest pytest-runner
+RUN pip3 install wheel pytest pytest-runner requests
 
 USER root
 RUN systemctl enable firewalld
