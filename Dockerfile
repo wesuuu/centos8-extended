@@ -7,5 +7,8 @@ RUN dnf install cronie \
 	network-scripts \
 	traceroute \
 	-y
+
+RUN pip3 install wheel -y
+
 USER root
 RUN systemctl enable firewalld
