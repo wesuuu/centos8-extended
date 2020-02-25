@@ -8,13 +8,21 @@ RUN dnf install cronie \
 	traceroute \
 	gcc \
 	python3-devel \
+	chrony \
+	rsyslog \
+	git \
 	-y
 
 RUN pip3 install wheel \
 		pytest \
 		pytest-runner \
 		requests \
-		elastalert
+		elastalert \
+		notebook \
+		pandas \
+		numpy \
+		yfinance \
+		matplotlib \
+		git+https://github.com/wuykimpang/oo-tools.git@master
 
-USER root
 RUN systemctl enable firewalld
