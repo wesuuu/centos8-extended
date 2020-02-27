@@ -34,6 +34,6 @@ RUN pip3 install wheel \
 
 # install go https://linuxize.com/post/how-to-install-go-on-centos-7/
 RUN wget https://dl.google.com/go/go1.14.linux-amd64.tar.gz
-RUN tar -C /usr/local/go/bin -xzf go1.14.linux-amd64.tar.gz
+RUN tar -C /usr/local/ -xzf go1.14.linux-amd64.tar.gz
 ENV PATH ${PATH}:/usr/local/go/bin
 RUN rm -rf *.gz
