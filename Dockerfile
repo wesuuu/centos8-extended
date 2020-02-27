@@ -11,6 +11,13 @@ RUN dnf install cronie \
 	chrony \
 	rsyslog \
 	git \
+	wget \
+	curl \
+	bash-completion \
+	lsof \
+	net-tools \
+	vim \
+	nano \
 	-y
 
 RUN pip3 install wheel \
@@ -25,4 +32,8 @@ RUN pip3 install wheel \
 		matplotlib \
 		git+https://github.com/wuykimpang/oo-tools.git@master
 
-RUN systemctl enable firewalld
+# install go https://linuxize.com/post/how-to-install-go-on-centos-7/
+RUN wget https://dl.google.com/go/go1.14.linux-amd64.tar.gz
+RUN tar -C /usr/bin -xzf go1.14.linux-amd64.tar.gz
+ENV PATH ${PATH}:/usr/local/go/bin
+RUN rm -rf *.gz
