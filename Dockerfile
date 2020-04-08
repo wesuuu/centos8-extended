@@ -1,6 +1,9 @@
 FROM centos:centos8
 
+RUN curl -sL https://rpm.nodesource.com/setup_12.x | bash -
+RUN yum module enable -y nodejs
 RUN dnf update -y
+RUN dnf groupinstall 'Development Tools' -y
 RUN dnf install cronie \
 	python3-pip \
 	firewalld \
@@ -18,7 +21,8 @@ RUN dnf install cronie \
 	net-tools \
 	vim \
 	nano \
-	-y
+	-y \
+	nodejs
 
 RUN pip3 install wheel \
 		pytest \
