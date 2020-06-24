@@ -42,4 +42,5 @@ RUN rm -rf jq
 # Chromedriver
 RUN wget https://chromedriver.storage.googleapis.com/84.0.4147.30/chromedriver_linux64.zip -O /tmp/chromedriver_linux64.zip
 RUN unzip /tmp/chromedriver_linux64.zip
+RUN chmod +x chromedriver
 RUN mv chromedriver /bin/
