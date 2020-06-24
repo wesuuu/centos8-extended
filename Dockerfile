@@ -4,25 +4,22 @@ RUN curl -sL https://rpm.nodesource.com/setup_12.x | bash -
 RUN yum module enable -y nodejs
 RUN dnf update -y
 RUN dnf groupinstall 'Development Tools' -y
-RUN dnf install cronie \
-	python3-pip \
-	firewalld \
-	network-scripts \
-	traceroute \
-	gcc \
-	python3-devel \
-	chrony \
-	rsyslog \
-	git \
-	wget \
-	curl \
-	bash-completion \
-	lsof \
-	net-tools \
-	vim \
-	nano \
-	-y \
-	nodejs
+RUN dnf install \
+		python3-pip \
+		traceroute \
+		gcc \
+		python3-devel \
+		rsyslog \
+		git \
+		wget \
+		curl \
+		bash-completion \
+		lsof \
+		net-tools \
+		vim \
+		nano \
+		nodejs \
+		-y
 
 RUN pip3 install wheel \
 		pytest \
@@ -34,17 +31,15 @@ RUN pip3 install wheel \
 		numpy \
 		yfinance \
 		matplotlib \
-		git+https://github.com/wuykimpang/oo-tools.git@master
+		oo-tools
 
-# install go https://linuxize.com/post/how-to-install-go-on-centos-7/
-RUN wget https://dl.google.com/go/go1.14.linux-amd64.tar.gz
-RUN tar -C /usr/local/ -xzf go1.14.linux-amd64.tar.gz
-ENV PATH ${PATH}:/usr/local/go/bin
-RUN rm -rf *.gz
-
-# install jq
 # jq
 RUN wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
 RUN chmod +x ./jq
 RUN cp jq /usr/bin
 RUN rm -rf jq
+
+# Chromedriver
+RUN wget https://chromedriver.storage.googleapis.com/84.0.4147.30/chromedriver_linux64.zip -O /tmp/chromedriver_linux64.zip
+RUN unzip /tmp/chromedriver_linux64.zip
+RUN mv chromedriver /bin/

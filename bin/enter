@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker run -ti wuykimpang/centos8-extended /bin/bash

@@ -1,4 +1,17 @@
 # centos8-extended
 
-centos8 configured machine for python development
+## Language support
 
+- nodejs
+- python3.6
+- C++ via gcc
+
+## Software
+
+- git
+- jupyter
+- chromedriver
+- curl
+- Development Tools
+- vim
+- jq
