@@ -1,8 +1,11 @@
 FROM centos:centos8
 
+# nodejs
 RUN curl -sL https://rpm.nodesource.com/setup_12.x | bash -
-RUN yum module enable -y nodejs
-RUN dnf update -y
+RUN yum module enable -y nodejs && \
+	dnf update -y
+
+# system programs
 RUN dnf groupinstall 'Development Tools' -y
 RUN dnf install \
 		python3-pip \
@@ -34,13 +37,13 @@ RUN pip3 install wheel \
 		oo-tools
 
 # jq
-RUN wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
-RUN chmod +x ./jq
-RUN cp jq /usr/bin
-RUN rm -rf jq
+RUN wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 && \
+	chmod +x ./jq && \
+	cp jq /usr/bin && \
+	rm -rf jq
 
 # Chromedriver
-RUN wget https://chromedriver.storage.googleapis.com/84.0.4147.30/chromedriver_linux64.zip -O /tmp/chromedriver_linux64.zip
-RUN unzip /tmp/chromedriver_linux64.zip
-RUN chmod +x chromedriver
-RUN mv chromedriver /bin/
+RUN wget https://chromedriver.storage.googleapis.com/84.0.4147.30/chromedriver_linux64.zip -O /tmp/chromedriver_linux64.zip && \
+	unzip /tmp/chromedriver_linux64.zip && \
+	chmod +x chromedriver && \
+	mv chromedriver /bin/
